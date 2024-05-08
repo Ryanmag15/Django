@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+    <!-- Adicionando Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilo personalizado */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Lista de Alunos</h1>
+        <ul class="list-group mt-3">
+            {% for aluno in alunos %}
+                <li class="list-group-item">
+                    <span>{{ aluno.matricula }} - {{ aluno.nome }}</span>
+                    <div>
+                        <a href="{% url 'editar_aluno' aluno.id %}" class="btn btn-primary btn-sm mr-2">Editar</a>
+                        <a href="{% url 'excluir_aluno' aluno.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'criar_aluno' %}" class="btn btn-success mt-3">Criar Novo Aluno</a>
+    </div>
+    <!-- Adicionando Bootstrap JS (opcional, caso você queira utilizar componentes que dependem do JS do Bootstrap) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
